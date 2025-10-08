@@ -1,0 +1,21 @@
+{
+  "run": {
+    "command": "nx serve",
+    "startTime": "2025-10-08T13:59:02.889Z",
+    "endTime": "2025-10-08T14:01:12.794Z",
+    "inner": false
+  },
+  "tasks": [
+    {
+      "taskId": "youth-reg-portal:serve:development",
+      "target": "serve",
+      "projectName": "youth-reg-portal",
+      "hash": "12024359402407687278",
+      "startTime": "2025-10-08T13:59:03.007Z",
+      "endTime": "2025-10-08T14:01:12.789Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 1
+    }
+  ]
+}
