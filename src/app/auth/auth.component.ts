@@ -6,7 +6,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from "@angular/forms";
 import { AuthService } from "./auth.service";
 import { environment } from "../../environments/environment";
 import { Router } from "@angular/router";
-import { response } from "express";
+// ...existing code...
 
 @Component({
     selector: 'app-auth',
@@ -32,13 +32,11 @@ export class AuthComponent implements OnInit {
     })
 
     ngOnInit(): void {
-        const loggedIn: string | null = localStorage.getItem(
-            environment.JWT_TOKEN_KEY
-        );
+        const loggedIn: string | null = this.getLocalStorageItem(environment.JWT_TOKEN_KEY);
 
         if (loggedIn == null || loggedIn === '') {
             this.authenticated = false;
-        } else{
+        } else {
             this.router.navigate(['/dashboard']);
         }
         
@@ -53,7 +51,7 @@ export class AuthComponent implements OnInit {
                     next: () => {
                         this.authenticating = false;
                         this.authenticated = true;
-                        this.authService.currentUserSignal.set(localStorage.getItem('auth'));
+                        this.authService.currentUserSignal.set(this.getLocalStorageItem('auth'));
                         this.router.navigate(['/dashboard']);
                     },
                     error: (err) => {
@@ -64,5 +62,13 @@ export class AuthComponent implements OnInit {
                     }
                 })
         }
+    }
+
+    // Safe localStorage access for environments where localStorage is not available (e.g., SSR)
+    private getLocalStorageItem(key: string): string | null {
+        if (typeof window === 'undefined' || !('localStorage' in window)) {
+            return null;
+        }
+        return window.localStorage.getItem(key);
     }
 }
