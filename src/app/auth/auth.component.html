@@ -1,0 +1,46 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <h2>Youth Registration Portal</h2>
+    
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input 
+          type="text" 
+          id="username" 
+          formControlName="username" 
+          class="form-control"
+          placeholder="Enter your username">
+        <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched" 
+             class="error-message">
+          Username is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input 
+          type="password" 
+          id="password" 
+          formControlName="password" 
+          class="form-control"
+          placeholder="Enter your password">
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" 
+             class="error-message">
+          Password is required
+        </div>
+      </div>
+
+      <button 
+        type="submit" 
+        class="login-btn"
+        [disabled]="authenticating || loginForm.invalid">
+        {{ authenticating ? 'Logging in...' : 'Login' }}
+      </button>
+    </form>
+
+    <div *ngIf="authenticated" class="success-message">
+      You are already logged in!
+    </div>
+  </div>
+</div>
