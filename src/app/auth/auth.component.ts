@@ -27,7 +27,7 @@ export class AuthComponent implements OnInit {
     authenticating = false;
 
     loginForm = this.fb.nonNullable.group({
-        username: ['', Validators.required],
+        email: ['', Validators.required],
         password: ['', Validators.required],
     })
 
@@ -48,7 +48,7 @@ export class AuthComponent implements OnInit {
         this.authenticating = true;
         if (this.loginForm.valid) {
             this.authService.login(
-                this.loginForm.value.username!,
+                this.loginForm.value.email!,
                 this.loginForm.value.password!).subscribe({
                     next: () => {
                         this.authenticating = false;

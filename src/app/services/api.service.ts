@@ -3,7 +3,10 @@ import { Injectable } from "@angular/core";
 import { catchError, map, Observable, throwError } from "rxjs";
 
 type RequestOptions = {
-    server: string;
+    server?: string;
+    headers?: any;
+    params?: any;
+    withCredentials?: boolean;
 }
 
 @Injectable({
@@ -37,7 +40,7 @@ export abstract class ApiService {
     }
 
     private formatErrors(error: any) {
-        return throwError(error);
+        return throwError(() => error);
     }
 
     protected get <T>(path: string, params: HttpParams = new HttpParams()): Observable<T> {
@@ -85,11 +88,18 @@ export abstract class ApiService {
     }
     
     protected post<T>(path: string, body: any = {}, isFile = false, options: RequestOptions = { server: this.server }): Observable<T> {
-        return this.http
-        .post<T>(`${options.server}${path}`, body, {
+        const server = options?.server ?? this.server;
+        const httpOptions: any = {
             headers: this.setHeaders(isFile),
-        })
-        .pipe(catchError(this.formatErrors));
+        };
+
+        if (options?.withCredentials !== undefined) {
+            httpOptions.withCredentials = !!options.withCredentials;
+        }
+
+        return this.http
+        .post<T>(`${server}${path}`, body, httpOptions)
+        .pipe(catchError(this.formatErrors)) as Observable<T>;
     }
     
     protected file<T>(path: string, file: File): Observable<T> {

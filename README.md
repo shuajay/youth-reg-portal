@@ -40,20 +40,72 @@ This will compile your project and store the build artifacts in the `dist/` dire
 
 To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
 
+# youth-reg-portal
+
+Developer README — quick start
+
+Requirements
+- Node.js (recommended LTS)
+- npm
+
+Install
+
 ```bash
-ng test
+npm install
 ```
 
-## Running end-to-end tests
+Development
 
-For end-to-end (e2e) testing, run:
+- Start the dev server (live reload, development environment file):
 
 ```bash
-ng e2e
+npm run dev
+# or
+npm start
+# both run: nx serve (development configuration by default)
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Notes:
+- The development configuration replaces `src/environments/environment.ts` with `src/environments/environment.development.ts` at build-time.
+- To run the app on a different port, pass the `--port` flag to nx, e.g.:
 
-## Additional Resources
+```bash
+npx nx serve youth-reg-portal --port=4300
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Production build
+
+- Build for production (this will replace `src/environments/environment.ts` with `src/environments/environment.production.ts`):
+
+```bash
+npx nx build youth-reg-portal --configuration=production
+```
+
+Server-side rendering (SSR) workflow
+
+1. In terminal A, build in watch mode (development):
+
+```bash
+npm run watch
+# runs: nx build --watch --configuration development
+```
+
+2. In terminal B, run the SSR server from the build output:
+
+```bash
+npm run serve:ssr:youth-reg-portal
+# runs: node dist/youth-reg-portal/server/server.mjs
+```
+
+Environment files
+
+- `src/environments/environment.ts` — base environment file used by default
+- `src/environments/environment.development.ts` — development overrides (used with development configuration)
+- `src/environments/environment.production.ts` — production overrides (used with production configuration)
+
+These file replacements are configured in `angular.json` so you don't need to change code when switching between dev and prod.
+
+Troubleshooting
+
+- If `nx` commands fail, run them via `npx nx ...` to use the local binary.
+- If you see missing dependencies, run `npm install`.

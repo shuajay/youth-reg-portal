@@ -33,11 +33,17 @@ export class AuthService extends ApiService {
     this.router.navigate(['/']);
   }
 
-  login(username: string, password: string) {
+  login(email: string, password: string) {
     const url = `${environment.auth_url.auth_base}/login`;
-    return this.post<any>(url, { username, password })
+    return this.post<any>(
+      url,
+      { email, password },
+      false,
+      { server: environment.auth_url.api, withCredentials: true }
+    )
       .pipe(
         map((response) => {
+          console.log('Login response:', response);
           if (response.token) {
             localStorage.setItem('auth', response.token);
             localStorage.setItem(environment.JWT_TOKEN_KEY, response.token);

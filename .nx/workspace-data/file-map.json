@@ -4,7 +4,6 @@
   "pathMappings": {},
   "nxJsonPlugins": [],
   "fileMap": {
-    "nonProjectFiles": [],
     "projectFileMap": {
       "youth-reg-portal": [
         {
@@ -12,12 +11,16 @@
           "hash": "4165385352547808172"
         },
         {
+          "file": ".env",
+          "hash": "13380418335086008974"
+        },
+        {
           "file": ".gitignore",
-          "hash": "17662118445199466776"
+          "hash": "18168400278403753650"
         },
         {
           "file": ".vscode/extensions.json",
-          "hash": "14075834438752640208"
+          "hash": "5331566439708925252"
         },
         {
           "file": ".vscode/launch.json",
@@ -29,27 +32,25 @@
         },
         {
           "file": "README.md",
-          "hash": "1046170850738390913"
+          "hash": "16211165560192357413"
         },
         {
-          "file": "nx.json",
-          "hash": "2297567833534322169"
+          "file": "angular.json",
+          "hash": "3442075370204176028"
         },
         {
           "file": "package-lock.json",
-          "hash": "511148430033302338"
+          "hash": "3465598116938809216"
         },
         {
           "file": "package.json",
-          "hash": "14839527793631482241",
+          "hash": "12673628634259061591",
           "deps": [
             "npm:@angular-devkit/core",
             "npm:@angular-devkit/schematics",
             "npm:@angular/build",
             "npm:@angular/cli",
             "npm:@angular/compiler-cli",
-            "npm:@nx/angular",
-            "npm:@nx/workspace",
             "npm:@schematics/angular",
             "npm:@types/express",
             "npm:@types/jasmine",
@@ -60,7 +61,6 @@
             "npm:karma-coverage",
             "npm:karma-jasmine",
             "npm:karma-jasmine-html-reporter",
-            "npm:nx",
             "npm:typescript",
             "npm:@angular/common",
             "npm:@angular/compiler",
@@ -70,15 +70,12 @@
             "npm:@angular/platform-server",
             "npm:@angular/router",
             "npm:@angular/ssr",
+            "npm:@auth0/angular-jwt",
             "npm:express",
             "npm:rxjs",
             "npm:tslib",
             "npm:zone.js"
           ]
-        },
-        {
-          "file": "project.json",
-          "hash": "5508729912502152559"
         },
         {
           "file": "public/favicon.ico",
@@ -94,11 +91,12 @@
         },
         {
           "file": "src/app/app.config.ts",
-          "hash": "16018283403023676420",
+          "hash": "12247313211927949055",
           "deps": [
             "npm:@angular/core",
             "npm:@angular/router",
-            "npm:@angular/platform-browser"
+            "npm:@angular/platform-browser",
+            "npm:@angular/common"
           ]
         },
         {
@@ -107,7 +105,7 @@
         },
         {
           "file": "src/app/app.html",
-          "hash": "10720859658560200944"
+          "hash": "15859320782510794227"
         },
         {
           "file": "src/app/app.routes.server.ts",
@@ -132,11 +130,93 @@
         },
         {
           "file": "src/app/app.ts",
-          "hash": "411191990356900167",
+          "hash": "15147614186415855511",
           "deps": [
             "npm:@angular/core",
             "npm:@angular/router"
           ]
+        },
+        {
+          "file": "src/app/auth/auth.component.css",
+          "hash": "2649153417579243866"
+        },
+        {
+          "file": "src/app/auth/auth.component.html",
+          "hash": "6810067118814214730"
+        },
+        {
+          "file": "src/app/auth/auth.component.ts",
+          "hash": "8162954261657524993",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:@angular/forms",
+            "npm:@angular/router",
+            "npm:express"
+          ]
+        },
+        {
+          "file": "src/app/auth/auth.service.ts",
+          "hash": "13091266699216834718",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router",
+            "npm:rxjs",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "src/app/auth/auth.spec.ts",
+          "hash": "4315512550341070439",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "src/app/auth/jwt-interceptor.spec.ts",
+          "hash": "10043789029715270266",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "src/app/auth/jwt-interceptor.ts",
+          "hash": "18188238818143275801",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "src/app/services/api.service.ts",
+          "hash": "10895289968353698510",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "src/environments/environment.development.ts",
+          "hash": "4005417941257667632"
+        },
+        {
+          "file": "src/environments/environment.production.ts",
+          "hash": "11857791351465711060"
+        },
+        {
+          "file": "src/environments/environment.ts",
+          "hash": "3785737112761106281"
+        },
+        {
+          "file": "src/environments/shared-config.ts",
+          "hash": "447435299378768739"
+        },
+        {
+          "file": "src/environments/types/environment-config.ts",
+          "hash": "6034896208379008219"
         },
         {
           "file": "src/index.html",
@@ -144,7 +224,7 @@
         },
         {
           "file": "src/main.server.ts",
-          "hash": "17902611827504992161",
+          "hash": "1958165360174922007",
           "deps": [
             "npm:@angular/platform-browser"
           ]
@@ -181,7 +261,8 @@
           "hash": "647795770471502525"
         }
       ]
-    }
+    },
+    "nonProjectFiles": []
   },
-  "externalNodesHash": "13944796327849466809"
+  "externalNodesHash": "17451701186256976642"
 }
