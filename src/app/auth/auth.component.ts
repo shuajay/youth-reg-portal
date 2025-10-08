@@ -6,7 +6,6 @@ import { FormBuilder, ReactiveFormsModule, Validators } from "@angular/forms";
 import { AuthService } from "./auth.service";
 import { environment } from "../../environments/environment";
 import { Router } from "@angular/router";
-// ...existing code...
 
 @Component({
     selector: 'app-auth',
